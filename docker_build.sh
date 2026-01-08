@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 BUILDER_IMAGE="ghcr.io/polprzewodnikowy/sc64env:v1.10"
 BUILDER_PLATFORM="linux/x86_64"
 
@@ -13,7 +15,7 @@ docker run \
     $DOCKER_OPTIONS \
     --rm \
     --user $(id -u):$(id -g) \
-    --mac-address ${MAC_ADDRESS:-F8:12:34:56:78:90} \
+    --mac-address ${MAC_ADDRESS:-60:CF:84:62:36:33} \
     -v "$(pwd)"/fw/project/lcmxo2/license.dat:/flexlm/license.dat \
     -v "$(pwd)":/workdir \
     -h=`hostname` \

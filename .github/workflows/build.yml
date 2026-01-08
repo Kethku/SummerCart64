@@ -36,7 +36,10 @@ jobs:
           LICENSE: ${{ secrets.LATTICE_DIAMOND_LICENSE_BASE64 }}
 
       - name: Build firmware
-        run: ./docker_build.sh release --force-clean
+        run: |
+          set -x # Enable shell debugging
+          docker info # Check Docker daemon status
+          ./docker_build.sh release --force-clean
         env:
           MAC_ADDRESS: ${{ secrets.LATTICE_DIAMOND_MAC_ADDRESS }}
           SC64_VERSION: ${{ steps.version.outputs.replaced }}
